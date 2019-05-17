@@ -1,2 +1,3 @@
 #dependencies
-webServer/node_modules
+webApp/server/node_modules
+webApp/frontend/node_modules
