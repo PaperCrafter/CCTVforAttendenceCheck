@@ -1,12 +1,35 @@
 #------------------
+import httplib2
 
 class Class:
-    def __init__(self, name, maximum, today, current):
-        self.className = name
-        self.maxStudent = maximum
-        self.todayMaxStudent = today
+    def __init__(self):
+
+        '''
+        http = httplib2.Http()
+        url = 'http://172.30.1.4:8001/api'
+        response, content = http.request(url, 'GET')
+
+        test = content.decode("utf-8")
+        cont = test.split(',')
+
+        CLASS = cont[0][14:-1]
+        MAX_STUDENT = int(cont[1][13:])
+        TODAY_MAX_STUDENT = int(cont[2][18:])
+        CURRENT_STUDENT = int(cont[4][17:-1])
+
+        self.className = CLASS
+        self.maxStudent = MAX_STUDENT
+        self.todayMaxStudent = TODAY_MAX_STUDENT
         self.before = 0
-        self.currentStudent = current
+        self.currentStudent = CURRENT_STUDENT
+        '''
+
+
+        self.className = 'test'
+        self.maxStudent = 15
+        self.todayMaxStudent = 15
+        self.before = 0
+        self.currentStudent = 15
         self.start()
         self.list = []
 
