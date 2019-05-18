@@ -3,14 +3,10 @@ import PageTemplate from 'components/common/PageTemplate';
 
 const ListPage = ()=>{
     return (
-        /*
+        
         <PageTemplate>
             List;
         </PageTemplate>
-        */
-       <div>
-        hi!!
-        </div>
     );
 };
 

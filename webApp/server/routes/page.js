@@ -6,4 +6,4 @@ router.get('./profile', (req, res)=>{
     res.render('profile', {title:'info - ' ,user:null});
 });
 
-router.get();
+module.exports = router;
