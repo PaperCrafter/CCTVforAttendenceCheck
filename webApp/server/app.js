@@ -1,17 +1,18 @@
-const express = require('expresss');
+const express = require('express');
 const cookieParser = require('cookie-parser');
-const morgan = reqire('morgan');
+const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
 require('dotenv').config();
 
 const pageRouter = require('./routes/page');
+const api = require('./api/getInfo');
 
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', pug);
+//app.set('view engine', pug);
 app.set('port', process.env.PORT||8001);
 
 app.use(morgan('dev'));
@@ -31,20 +32,8 @@ app.use(session({
 
 app.use(flash());
 
-app.use('/', pageRouter);
-
-app.use((req, res, next) => {
-    const err = new Error('not found');
-    err.status = 404;
-    next(err);
-});
-
-app.use((err, req, res)=>{
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development'? err:{};
-    res.status(err.status || 500);
-    res.render('error');    
-});
+//app.use('/', pageRouter);
+app.use('/', api);
 
 app.listen(app.get('port'), ()=>{
     console.log(app.get('port'), '번 포트에서 대기중');

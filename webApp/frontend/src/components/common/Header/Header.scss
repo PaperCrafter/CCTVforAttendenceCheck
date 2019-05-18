@@ -1,7 +1,7 @@
 @import 'utils';
 
 .header{
-    background:$oc-blue-6;
+    background: $oc-blue-6;
     .header-content{
         height:5rem;
         width:1400px;
@@ -13,7 +13,7 @@
         display:flex;
         align-items: center;
 
-        @include media("wide"){
+        @include media("<wide"){
             width:100%;
         }
         @include media("<medium"){
