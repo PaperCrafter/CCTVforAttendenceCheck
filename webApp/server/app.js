@@ -5,14 +5,15 @@ const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
 require('dotenv').config();
+const {sequelize} = require('./models');
 
-const pageRouter = require('./routes/page');
-const api = require('./api/getInfo');
+const infoApi = require('./api/getInfo');
+const uploadApi = require('./api/uploadImage');
 
 const app = express();
+sequelize.sync();
 
 app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', pug);
 app.set('port', process.env.PORT||8001);
 
 app.use(morgan('dev'));
@@ -31,9 +32,11 @@ app.use(session({
 }));
 
 app.use(flash());
+app.use('/img', express.static(path.join(__dirname, 'uploads')));
 
 //app.use('/', pageRouter);
-app.use('/', api);
+app.use('/', infoApi);
+app.use('/upload', uploadApi);
 
 app.listen(app.get('port'), ()=>{
     console.log(app.get('port'), '번 포트에서 대기중');

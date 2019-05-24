@@ -6,6 +6,7 @@ const App = () => {
     return(
         <Switch>
             <Route exact path ='/' component = {ListPage}/>
+
             <Route component = {NotFoundPage}/>
         </Switch>
     );    

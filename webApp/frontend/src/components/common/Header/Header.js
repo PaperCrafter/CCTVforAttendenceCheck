@@ -13,7 +13,7 @@ const Header = ()=>(
             </div>
         </div>
         <div classNames = {cx('right')}>
-
+            {/*조건에 따른 추가 랜더링*/}
         </div>
     </header>
 );
