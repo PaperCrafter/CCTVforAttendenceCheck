@@ -1,3 +1,4 @@
 #dependencies
 webApp/server/node_modules
 webApp/frontend/node_modules
+webApp/server/uploads
