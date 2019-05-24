@@ -1,14 +1,12 @@
 module.exports = (sequelize, DataTypes)=>(
-    sequelize.define('post',{
+    sequelize.define('Post',{
         Date:{
             type: DataTypes.DATE(),
             allowNull: false,
-            defaultValue:Date(),
         },
         Time:{
             type:DataTypes.TIME(),
             allowNull: false,
-            defaultValue:(new Date()).getTime(),
         },
         Body:{
             type:DataTypes.STRING(100),
