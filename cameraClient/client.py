@@ -38,6 +38,15 @@ try:
             # Reset the stream for the next capture
             stream.seek(0)
             stream.truncate()
+
+            time.sleep(1)
+            check = client_socket.recv(1024)
+            if check.decode == "dec":
+                print("Decreased")
+            elif check.decode == "inc":
+                print("Increased")
+
+
     # Write a length of zero to the stream to signal we're done
     connection.write(struct.pack('<L', 0))
 finally:
