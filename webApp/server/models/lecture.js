@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes)=>(
-    sequelize.define('lecture',{
-        LecutreName:{
+    sequelize.define('lectures',{
+        LectureName:{
             type: DataTypes.STRING(20),
             allowNull: false,
             unique:true,

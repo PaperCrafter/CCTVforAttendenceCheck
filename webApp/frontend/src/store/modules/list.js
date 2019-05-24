@@ -9,7 +9,7 @@ import * as api from 'lib/api'
 const GET_POST_LIST = 'list/GET_POST_LIST';
 
 //action creators
-export const getPostList = createAction(GET_POST_LIST, api.getPostList, meta => meta);
+export const getPostList = createAction(GET_POST_LIST, api.getList, meta => meta);
 
 //initial states
 const initialState = Map({

@@ -29,7 +29,7 @@ const upload = multer({
     limits:{fileSize:5*1024*1024},
 });
 
-router.post('/img',upload.fields([{name:'before'},{name:'after'}]),(req, res)=>{
+router.post('/',upload.fields([{name:'before'},{name:'after'}]),(req, res)=>{
     console.log(req.files);
     const date = new Date();
     //const time = date.getTime();

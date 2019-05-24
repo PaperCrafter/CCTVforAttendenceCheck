@@ -7,13 +7,13 @@ const flash = require('connect-flash');
 require('dotenv').config();
 const {sequelize} = require('./models');
 
-const infoApi = require('./api/getInfo');
-const uploadApi = require('./api/uploadImage');
+const getLectureInfoApi = require('./apiML/getLectureInfo');
+const uploadApi = require('./apiML/uploadImage');
+
+const GetPostApi = require('./api/getList');
 
 const app = express();
 sequelize.sync();
-
-app.set('views', path.join(__dirname, 'views'));
 app.set('port', process.env.PORT||8001);
 
 app.use(morgan('dev'));
@@ -34,9 +34,13 @@ app.use(session({
 app.use(flash());
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
 
-//app.use('/', pageRouter);
-app.use('/', infoApi);
-app.use('/upload', uploadApi);
+//ML서버용 api
+app.use('/getLectureInfo', getLectureInfoApi);
+app.use('/uploadImage', uploadApi);
+
+//react api
+app.use('/GetPost',GetPostApi);
+
 
 app.listen(app.get('port'), ()=>{
     console.log(app.get('port'), '번 포트에서 대기중');
