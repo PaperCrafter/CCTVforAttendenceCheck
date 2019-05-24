@@ -1,0 +1,21 @@
+@import 'utils';
+
+.post-list{
+    .post-item{
+        padding:1.5rem;
+        transition:all .15s else-in;
+        
+        .date{
+            font-size:0.85rem;
+            color:$oc-gray-5;
+        }
+        p{
+            font-weight: 300;
+            color:$oc-gray-7;
+        }
+    }
+
+    .post-item + post-item{
+        border-top:2px solid $oc-gray-3;
+    }
+}
