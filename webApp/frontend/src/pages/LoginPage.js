@@ -1,17 +1,18 @@
 import React from 'react';
 import PageTemplate from 'components/common/PageTemplate';
-import ListWrapper from 'components/list/ListWrapper'
-import PostList from '../components/list/PostList';
+import LoginWrapper from 'components/login/LoginWrapper';
+import LoginBox from 'components/login/LoginBox';
+import LoginContainer from 'components/login/LoginContainer';
 
-const ListPage = ()=>{
+const LoginPage = ()=>{
     return (
         
         <PageTemplate>
-            <ListWrapper>
-                <PostList/>
-            </ListWrapper>
+            <LoginWrapper>
+                <LoginBox/>
+            </LoginWrapper>
         </PageTemplate>
     );
 };
 
-export default ListPage;
+export default LoginPage;

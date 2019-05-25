@@ -39,7 +39,7 @@ app.use('/getLectureInfo', getLectureInfoApi);
 app.use('/uploadImage', uploadApi);
 
 //react api
-app.use('/GetPost',GetPostApi);
+app.use('/GetPost', GetPostApi);
 
 
 app.listen(app.get('port'), ()=>{

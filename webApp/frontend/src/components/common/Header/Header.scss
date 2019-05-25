@@ -1,7 +1,12 @@
 @import 'utils';
 
 .header{
+    position:fixed;
+    display:inline;
     background: $oc-blue-6;
+    width:100%;
+    @include material-shadow(2, 1, black);
+
     .header-content{
         height:5rem;
         width:1400px;
@@ -23,7 +28,7 @@
 
         .brand{
             color:white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 600;
         }
 
