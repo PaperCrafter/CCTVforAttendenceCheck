@@ -11,7 +11,8 @@ const cx = classNames.bind(styles);
 const PostItem = ({publishedDate, publishedTime, body, ImgBefore, ImgAfter}) => {
     return(
         <div className = {cx('post-item')}>
-            <div className = {cx('date')}>{moment(publishedDate).format(`ll`)} {publishedTime}</div>
+            <div className = {cx('date')}>{moment(publishedDate).format(`ll`)}</div>
+            <div className = {cx('time')}>{publishedTime}</div>
             <p>{removeMd(body)}</p>
             <div>
                 <img src = {require(`C:/Users/paper/workspace/CCTVforAttendenceCheck/webApp/server/uploads/${ImgBefore}`)} width="50%"/>

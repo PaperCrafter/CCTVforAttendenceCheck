@@ -4,18 +4,30 @@
     .post-item{
         padding:1.5rem;
         transition:all .15s else-in;
-        
+        background:white;
+        margin-bottom: 0.5rem;
+
         .date{
-            font-size:0.85rem;
-            color:$oc-gray-5;
+            font-size:1.4rem;
+            color:$oc-gray-8;
+            font-weight: 500;
         }
+
+        .time{
+            font-size:1.0rem;
+            color:$oc-gray-5;
+            font-weight: 400;
+        }
+
         p{
             font-weight: 300;
             color:$oc-gray-7;
         }
     }
-
-    .post-item + post-item{
-        border-top:2px solid $oc-gray-3;
+    /*
+    .post-item + .post-item{
+        border:3px solid $oc-gray-3;
+        
     }
+    */
 }

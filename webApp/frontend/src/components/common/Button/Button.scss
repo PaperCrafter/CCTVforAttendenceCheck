@@ -11,6 +11,7 @@
     cursor: pointer;
     user-select: none;
     display:inline-flex;
+    text-align: center;
 
     &.default{
         background:$oc-blue-6;
