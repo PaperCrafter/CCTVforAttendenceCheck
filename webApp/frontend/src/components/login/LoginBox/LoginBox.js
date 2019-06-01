@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind'
 import styles from './LoginBox.scss';
-import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 

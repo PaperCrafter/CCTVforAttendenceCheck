@@ -1,0 +1,55 @@
+@import 'utils';
+
+.SelectBox{
+    background: white;
+    padding:2.5rem;
+    position: relative;
+    padding-top: 3.0rem;
+    width:30rem;
+    margin: auto;
+
+    display:flex;
+    flex-direction: column;
+
+    .title{
+        font-size:1.5rem;
+        font-weight:500;
+    }
+
+    .desc{
+        margin-top:0.25rem;
+    }
+
+    input{
+        width:100%;
+        margin-top:0.5rem;
+        margin-bottom: 0.5rem;
+        border:none;
+        border-bottom: 1px solid $oc-gray-3;
+        border-radius: 4px;
+        outline:none;
+        padding:0.5rem;
+        font-size:1.3rem;
+        
+        
+    }
+
+    .btn{
+        width:100%;
+        font-size:1.3rem;
+        margin-top:1.0rem;
+        border:none;
+        padding:0.25rem;
+        text-align: center;
+        font-weight: 500;
+        background:$oc-blue-6;
+        color:white;
+
+        &:hover{
+            background:$oc-blue-5;
+        }
+        &:active{
+            background:$oc-blue-6;
+        }
+    }
+}

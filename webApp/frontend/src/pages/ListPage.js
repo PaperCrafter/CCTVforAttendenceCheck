@@ -3,12 +3,15 @@ import PageTemplate from 'components/common/PageTemplate';
 import ListWrapper from 'components/list/ListWrapper';
 import ListContainer from 'components/list/ListContainer';
 
-const ListPage = ()=>{
-    return (
-        
+const ListPage = ({match})=>{
+    const {page = 1} = match.params;
+
+    return ( 
         <PageTemplate>
             <ListWrapper>
-                <ListContainer/>
+                <ListContainer
+                    page={parseInt(page, 10)}
+                />
             </ListWrapper>
         </PageTemplate>
     );
