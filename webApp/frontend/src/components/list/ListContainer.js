@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PostList from 'components/list/PostList';
-//import Pagenation from 'components/list/Pagenation';
+import Pagination from 'components/list/Pagination';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as listActions from 'store/modules/list';
@@ -8,6 +8,7 @@ import * as listActions from 'store/modules/list';
 class ListContainer extends Component {
     getPostList =()=>{
         const {page, ListActions} = this.props;
+
         ListActions.getPostList({
             page
         });
@@ -17,7 +18,7 @@ class ListContainer extends Component {
         this.getPostList();
     }
 
-    compoenetDidUpdate(prevProps, prevState){
+    componentDidUpdate(prevProps, prevState){
         if(prevProps.page !== this.props.page){
             this.getPostList();
             document.documentElement.scrollTop = 0;
@@ -25,19 +26,22 @@ class ListContainer extends Component {
     }
 
     render(){
+
         const {loading, posts, page, lastPage} = this.props;
         if(loading) return null;
         return(
             <div>
                 <PostList posts = {posts}/>
-                {/*<Pagenation page={page} lastPage={lastPage}/>*/}
+                <Pagination page={page} lastPage={lastPage}/>
             </div>
         );
     }
 }
 
+
 export default connect(
     (state)=>({
+        lastPage:state.list.get('lastPage'),
         posts:state.list.get('posts'),
         loading:state.pender.pending['list/GET_POST_LIST']
     }),

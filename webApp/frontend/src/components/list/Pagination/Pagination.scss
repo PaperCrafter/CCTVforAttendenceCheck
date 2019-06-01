@@ -1,0 +1,14 @@
+@import 'utils';
+.pagiation{
+    margin-top:2rem;
+
+    display:flex;
+    align-items:center;
+
+    .numbers{
+        font: size 0.85rem;
+        text-align:center;
+        color:$oc-gray-6;
+        flex:1;
+    }
+}
