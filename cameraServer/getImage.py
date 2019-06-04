@@ -12,6 +12,8 @@ from PIL import Image
 i = 0
 num = 0
 Human_num = 0
+
+BeforeCheckedName='0img.jpg'
 CheckedName='0img.jpg'
 
 Cla = cs.Class()
@@ -43,16 +45,16 @@ try:
 
         image_stream.seek(0)
         image = Image.open(image_stream)
-        # print('Image is %dx%d' % image.size)
 
         image.verify()
 
         image = Image.open(image_stream)
         image.save('./img/' + str(i) + 'img.jpg')
-        # print('Image is verified')
 
         # rename image_name for calc
         fileName = str(i) + "img.jpg"
+
+        MuchBeforeCheckedName = BeforeCheckedName
         BeforeCheckedName = CheckedName
         CheckedName = str(num) + "img.jpg"
 
@@ -64,23 +66,23 @@ try:
 
         # reflecting human num and checking change
         Cla.change_num(Human_num)
-        if Cla.check(num):
-            print(Cla.list)
-            before = './img/checked/' + BeforeCheckedName
-            after = './img/checked/' + CheckedName
+        if Cla.check():
+            before = './img/checked/' + MuchBeforeCheckedName
+            after = './img/checked/' + BeforeCheckedName
             Cla.send(before, after)
-            #---
-            if Cla.check(num) == 1:
+
+        # send feedback to Raspberry
+            if Cla.check() == 1:
+                print("Students Decreased / image Num ==" + str(num-1))
                 msg = 'dec'
                 connection.send(msg.encode('utf-8'))
-            elif Cla.check(num) == 2:
+            elif Cla.check() == 2:
+                print("Students Increased / image Num ==" + str(num-1))
                 msg = 'inc'
-                connection.sendall(msg.encode('utf-8'))
+                connection.send(msg.encode('utf-8'))
         else:
             msg = 'nope'
             connection.sendall(msg.encode('utf-8'))
-            #---
-
             
         # variables change for image process
         i = i + 1

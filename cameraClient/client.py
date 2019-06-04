@@ -7,7 +7,13 @@ import picamera
 # Connect a client socket to my_server:8000 (change my_server to the
 # hostname of your server)
 client_socket = socket.socket()
+
+# ------------------------------------------------------------
+
 client_socket.connect(('192.168.0.8', 8045))
+# ip 주소를 현재 딥러닝 서버 쪽의 ip 주소로 변경해야 함
+
+# ------------------------------------------------------------
 
 # Make a file-like object out of the connection
 connection = client_socket.makefile('wb')
@@ -41,11 +47,10 @@ try:
 
             time.sleep(1)
             check = client_socket.recv(1024)
-            if check.decode == "dec":
+            if check.decode('utf-8')=="dec":
                 print("Decreased")
-            elif check.decode == "inc":
-                print("Increased")
-
+            elif check.decode('utf-8')=="inc":
+                print("increased")
 
     # Write a length of zero to the stream to signal we're done
     connection.write(struct.pack('<L', 0))

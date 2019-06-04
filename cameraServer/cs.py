@@ -3,15 +3,24 @@ import requests
 
 class Class:
     def __init__(self):
+        # ------------------------------------------------------------
 
+        url_get = 'http://192.168.0.6:8001/getLectureInfo'
+        # ip 주소 부분을 Webserver ip 주소로 변경
+
+        # 아래 Send 부분의 주소도 Webserver IP로 바꿔줘야 함.
+
+        # ------------------------------------------------------------
+
+        # Get Data From Web Server
         http = httplib2.Http()
-        url = 'http://192.168.0.5:8001/api'
-        response, content = http.request(url, 'GET')
+        response, content = http.request(url_get, 'GET')
 
         test = content.decode("utf-8")
         print(test)
         cont = test.split(',')
 
+        # Parsing & Initiating
         CLASS = cont[0][14:-1]
         MAX_STUDENT = int(cont[1][13:])
         TODAY_MAX_STUDENT = int(cont[2][18:])
@@ -20,33 +29,25 @@ class Class:
         self.className = CLASS
         self.maxStudent = MAX_STUDENT
         self.todayMaxStudent = TODAY_MAX_STUDENT
-        self.before = 0
-        self.currentStudent = CURRENT_STUDENT
-        self.start()
 
-        '''
-        #--- for testing
-        self.className = 'test'
-        self.maxStudent = 15
-        self.todayMaxStudent = 15
-        self.before = 0
-        self.currentStudent = 15
+        self.before = CURRENT_STUDENT
+        self.much_before = CURRENT_STUDENT
+        self.currentStudent = CURRENT_STUDENT
+
         self.start()
-        #---
-        '''
 
     def change_num(self, t):
+        self.much_before = self.before
         self.before = self.currentStudent
         self.currentStudent = t
         print("Current Students : "+str(self.currentStudent))
 
     def check(self):
-        if self.currentStudent < self.before:
-            print("Students Decreased")
-            return 1
-        elif self.currentStudent > self.before:
-            print("Students Increased")
-            return 2
+        if self.before == self.currentStudent and self.much_before != self.currentStudent:
+            if self.currentStudent < self.much_before:
+                return 1
+            elif self.currentStudent > self.much_before:
+                return 2
         else:
             return False
 
@@ -55,13 +56,18 @@ class Class:
         print("Original Students Number: "+str(self.todayMaxStudent))
         print("Current Students Number: "+str(self.currentStudent))
 
-    def add_list(self, num):
-        self.list.append(num)
-
     def send(self, before, after):
+
+        #------------------------------------------------------------
+
+        image_url = 'http://192.168.0.6:8001/uploadImage'
+        # ip 주소 부분을 Webserver ip 주소로 변경
+
+        # ------------------------------------------------------------
+
         data = open(before, 'rb').read()
         data2 = open(after, 'rb').read()
         files = {'before': data, 'after': data2}
-        image_url = 'http://192.168.0.5:8001/upload/img'
+
         res = requests.post(image_url, files=files)
         print(res)
