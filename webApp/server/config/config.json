@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "emforjs124",
+    "password": "",
     "database": "CCTVApp",
     "host": "127.0.0.1",
     "dialect": "mysql",
